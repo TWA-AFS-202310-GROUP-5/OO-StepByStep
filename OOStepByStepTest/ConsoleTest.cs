@@ -20,7 +20,7 @@ namespace OOStepByStepTest
             new Class1().Print();
 
             // then
-            Assert.Equal("console\n", fakeOutput.ToString());
+            Assert.Equal("console\r\n", fakeOutput.ToString());
         }
     }
 }
