@@ -9,18 +9,31 @@ namespace OOStepByStep
 {
     public class Person
     {
-        public Person(string n, int a)
+        public Person(string name, int age)
         {
-            Name = n;
-            Age = a;
+            Name = name;
+            Age = age;
+        }
+
+        public Person(string name, int age, int classNumber)
+        {
+            Name = name;
+            Age = age;
+            ClassNumber = classNumber;
         }
 
         private string Name { get; set; }
         private int Age { get; set; }
+        private int ClassNumber { get; set; }
 
         public virtual string Introduce()
         {
             return $"My name is {Name}. I am {Age} years old.";
+        }
+
+        public string GenerateClassIntroduce()
+        {
+            return ClassNumber == 0 ? string.Empty : $" of class {ClassNumber}";
         }
     }
 }

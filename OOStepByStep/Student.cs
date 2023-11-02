@@ -12,9 +12,13 @@ namespace OOStepByStep
         {
         }
 
+        public Student(string name, int age, int classNumber) : base(name, age, classNumber)
+        {
+        }
+
         public override string Introduce()
         {
-            return base.Introduce() + " I am a student.";
+            return $"{base.Introduce()} I am a student{this.GenerateClassIntroduce()}.";
         }
     }
 }

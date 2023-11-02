@@ -57,11 +57,11 @@ namespace OOStepByStepTest
         [InlineData("Bob", 43, 5)]
         public void Should_return_self_introduction_given_teacher_with_name_and_age_and_class(string name, int age, int classNumber)
         {
-            var teacher = new Teacher(name, age);
+            var teacher = new Teacher(name, age, classNumber);
 
             var result = teacher.Introduce();
 
-            Assert.Equal(result, $"My name is {name}. I am {age} years old. I am a teacher of class {classNumber}");
+            Assert.Equal(result, $"My name is {name}. I am {age} years old. I am a teacher of class {classNumber}.");
         }
 
         [Theory]
@@ -70,11 +70,11 @@ namespace OOStepByStepTest
         [InlineData("Bob", 13, 5)]
         public void Should_return_self_introduction_given_student_with_name_and_age_and_class(string name, int age, int classNumber)
         {
-            var student = new Student(name, age);
+            var student = new Student(name, age, classNumber);
 
             var result = student.Introduce();
 
-            Assert.Equal(result, $"My name is {name}. I am {age} years old. I am a teacher of class {classNumber}");
+            Assert.Equal(result, $"My name is {name}. I am {age} years old. I am a student of class {classNumber}.");
         }
     }
 }
