@@ -73,7 +73,7 @@ namespace OOStepByStepTest
         {
             //Given
             Class class2 = new Class("2");
-            Teacher teacher = new Teacher("Tom", 21);
+            Teacher teacher = new Teacher("Amy", 30);
             class2.Add(teacher);
 
             //When
