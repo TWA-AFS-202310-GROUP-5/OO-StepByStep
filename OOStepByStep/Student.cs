@@ -16,5 +16,10 @@ namespace OOStepByStep
         {
             return base.Introduce() + " I am a student.";
         }
+
+        public string DetailIntroduce()
+        {
+            return Introduce() + $" I am a student of class {ClassId}.";
+        }
     }
 }

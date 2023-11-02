@@ -10,6 +10,7 @@ namespace OOStepByStep
     {
         public string Name { get; set; }
         public int Age { get; set; }
+        public string ClassId { get; set; }
 
         public Person(){}
 
