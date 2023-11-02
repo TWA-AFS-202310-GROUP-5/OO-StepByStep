@@ -8,25 +8,27 @@ namespace OOStepByStep
 {
     public class ClassRoom
     {
-        private List<Student> students;
-        private Teacher teacher;
-        private int classNumber;
-
-        public ClassRoom(int v)
+        public ClassRoom(int number)
         {
-            V = v;
+            ClassNumber = number;
+            Students = new List<Student>();
         }
 
-        public int V { get; }
+        private List<Student> Students { get; set; }
+        private Teacher Teacher { get; set; }
+        private int ClassNumber { get; set; }
 
-        public void AddStudent(Student studentA)
+        public void AddStudent(Student newStudent)
         {
-            throw new NotImplementedException();
+            Teacher.Welcome(newStudent);
+            Students.ForEach(student => student.Welcome(newStudent));
+            Students.Add(newStudent);
         }
 
-        public void AddTeacher(Person person)
+        public void AddTeacher(Teacher teacher)
         {
-            throw new NotImplementedException();
+            teacher.SetClassNumber(ClassNumber);
+            Teacher = teacher;
         }
     }
 }

@@ -85,9 +85,10 @@ namespace OOStepByStepTest
         public void Should_return_teacher_and_student_introduction_when_student_join_in_class()
         {
             var studentA = new Student("Alice", 10);
-            var studentB = new Student("Bob", 11);
+            var studentB = new Student("Jack", 11);
             var teacher = new Teacher("Bob", 43);
-            var classRoom = new ClassRoom(2);
+            var classRoomNumber = 2;
+            var classRoom = new ClassRoom(classRoomNumber);
             var fakeOutput = new StringBuilder();
             Console.SetOut(new StringWriter(fakeOutput));
 
@@ -95,7 +96,9 @@ namespace OOStepByStepTest
             classRoom.AddStudent(studentA);
             classRoom.AddStudent(studentB);
 
-            Assert.Equal("console\r\n", fakeOutput.ToString());
+            Assert.Equal("My name is Bob. I am 43 years old. I am a teacher of class 2. Welcome Alice join class 2.\r\n" +
+                "My name is Bob. I am 43 years old. I am a teacher of class 2. Welcome Jack join class 2.\r\n" +
+                "My name is Alice. I am 10 years old. I am a student of class 2. Welcome Jack join class 2.\r\n", fakeOutput.ToString());
         }
     }
 }
