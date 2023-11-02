@@ -22,6 +22,7 @@ namespace OOStepByStep
         {
             Teacher.Welcome(newStudent);
             Students.ForEach(student => student.Welcome(newStudent));
+            newStudent.SetClassNumber(ClassNumber);
             Students.Add(newStudent);
         }
 
