@@ -15,19 +15,21 @@ namespace OOStepByStep
             this.className = className;
         }
 
-        public string Add(SchoolPersonnel person)
+        public string Add(Person person)
         {
             string msg = Welcome(person.Name);
-            person.UpdateClass(className);
 
             if (person is Teacher)
             {
                 teacher = (Teacher)person;
+                teacher.AssignClass(className);
             }
 
             if (person is Student)
             {
-                students.Add((Student)person);
+                Student student = (Student)person;
+                students.Add(student);
+                student.AssignClass(className);
             }
 
             return msg;

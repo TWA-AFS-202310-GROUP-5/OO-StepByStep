@@ -1,37 +1,27 @@
-﻿namespace OOStepByStep
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace OOStepByStep
 {
-    public class SchoolPersonnel : Person
+    public class SchoolPersonnel : ISchoolPersonnel
     {
         private string className;
 
-        public SchoolPersonnel() : base()
-        {
-        }
-
-        public SchoolPersonnel(string name, int age) : base(name, age)
-        {
-        }
-
         public string ClassName => className;
+        public bool HasClass => className is not null;
 
         public void UpdateClass(string className)
         {
             this.className = className;
         }
 
-        public override string Introduce()
-        {
-            return base.Introduce();
-        }
-
-        public string Welcome(string name)
+        public string WelcomeNewClassMember(string name)
         {
             if (ClassName is null)
             {
                 return string.Empty;
             }
 
-            return Introduce() + $" Welcome {name} join class {ClassName}.";
+            return $" Welcome {name} join class {ClassName}.";
         }
     }
 }
