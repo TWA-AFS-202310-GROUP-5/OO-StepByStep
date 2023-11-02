@@ -12,11 +12,18 @@
 
         public Person(string name, int age)
         {
+            this.name = name;
+            this.age = age;
         }
 
         public string Introduce()
         {
-            return string.Empty;
+            return $"My name is {name}. I am {age} years old.";
+        }
+
+        public void Print()
+        {
+            Console.WriteLine(Introduce());
         }
     }
 }

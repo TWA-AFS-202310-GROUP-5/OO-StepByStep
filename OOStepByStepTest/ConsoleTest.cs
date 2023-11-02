@@ -10,17 +10,18 @@ namespace OOStepByStepTest
     public class ConsoleTest
     {
         [Fact]
-        public void Test_Console()
+        public void Should_print_message_include_name_age_when_introduce_given_person()
         {
             // given
             var fakeOutput = new StringBuilder();
             Console.SetOut(new StringWriter(fakeOutput));
+            Person person = new Person("Tom", 21);
 
             // when
-            new Person().Print();
+            person.Print();
 
             // then
-            Assert.Equal("console\r\n", fakeOutput.ToString());
+            Assert.Equal("My name is Tom. I am 21 years old.\r\n", fakeOutput.ToString());
         }
     }
 }
