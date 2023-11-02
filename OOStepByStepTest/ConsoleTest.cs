@@ -36,7 +36,7 @@ namespace OOStepByStepTest
             student.Print();
 
             //Then
-            Assert.Equal("My name is Tom. I am 21 years old. I am a student.", fakeOutput.ToString());
+            Assert.Equal("My name is Tom. I am 21 years old. I am a student.\r\n", fakeOutput.ToString());
         }
 
         [Fact]
@@ -45,13 +45,13 @@ namespace OOStepByStepTest
             //Given
             var fakeOutput = new StringBuilder();
             Console.SetOut(new StringWriter(fakeOutput));
-            Teacher teacher = new Teacher("Tom", 21);
+            Teacher teacher = new Teacher("Amy", 30);
 
             //When
             teacher.Print();
 
             //Then
-            Assert.Equal("My name is Amy. I am 30 years old. I am a teacher.", fakeOutput.ToString());
+            Assert.Equal("My name is Amy. I am 30 years old. I am a teacher.\r\n", fakeOutput.ToString());
         }
     }
 }
