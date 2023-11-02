@@ -3,13 +3,19 @@ namespace OOStepByStepTest
     using OOStepByStep;
     using Xunit;
 
-    public class UnitTest1
+    public class PersonTest
     {
         [Fact]
-        public void Test1()
+        public void Should_return_message_include_name_age_when_introduce_given_person()
         {
-            var class1 = new Class1();
-            Assert.NotNull(class1);
+            //Given
+            Person person = new Person("Tom", 21);
+
+            //When
+            string result = person.Introduce();
+
+            //Then
+            Assert.Equal("My name is Tom. I am 21 years old.", result);
         }
     }
 }
