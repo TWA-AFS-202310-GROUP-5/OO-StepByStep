@@ -90,9 +90,10 @@ namespace OOStepByStepTest
             //when
             string msg = c1.Join("Jane", 19);
             string expectMsg = "My name is Amy. I am 30 years old. I am a teacher of class 2. Welcome Jane join class 2." +
-                "\nMy name is Tom. I am 18 years old. I am a student of class 2. Welcome Jane join class 2." +
-                "\nMy name is Jack. I am 19 years old. I am a student of class 2. Welcome Jane join class 2.";
+                "\r\nMy name is Tom. I am 18 years old. I am a student of class 2. Welcome Jane join class 2." +
+                "\r\nMy name is Jack. I am 19 years old. I am a student of class 2. Welcome Jane join class 2.\r\n";
 
+            Assert.Equal(expectMsg, msg);
         }
     }
 }
