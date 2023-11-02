@@ -39,5 +39,43 @@ namespace OOStepByStepTest
             //then
             Assert.Equal($"My name is {name}. I am {age} years old. I am a student.", msg);
         }
+
+        [Theory]
+        [InlineData("Amy", 30)]
+        [InlineData("Mike", 50)]
+        public void Should_return_teacherIntroMsg_given_teacherInfo(string name, int age)
+        {
+            //given
+            Teacher teacher = new Teacher(name, age);
+            //when
+            string msg = teacher.SelfIntroduceMsg();
+            //then
+            Assert.Equal($"My name is {name}. I am {age} years old. I am a teacher.", msg);
+        }
+
+        [Theory]
+        [InlineData("Tom", 18, 2)]
+        public void Should_return_stuIntroMsg_given_stuInfo_with_classNum(string name, int age, int classNum)
+        {
+            //given
+            Student student = new Student(name, age, classNum);
+            //when
+            string msg = student.SelfIntroduceMsg();
+            //then
+            Assert.Equal($"My name is {name}. I am {age} years old. I am a student of class {classNum}.", msg);
+        }
+
+        [Theory]
+        [InlineData("Amy", 30, 2)]
+        [InlineData("Mike", 40, 5)]
+        public void Should_return_teacherIntroMsg_given_teacherInfo_with_classNum(string name, int age, int classNum)
+        {
+            //given
+            Teacher teacher = new Teacher(name, age, classNum);
+            //when
+            string msg = teacher.SelfIntroduceMsg();
+            //then
+            Assert.Equal($"My name is {name}. I am {age} years old. I am a teacher of class {classNum}.", msg);
+        }
     }
 }
