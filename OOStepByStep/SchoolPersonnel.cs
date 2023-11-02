@@ -23,5 +23,15 @@
         {
             return base.Introduce();
         }
+
+        public string Welcome(string name)
+        {
+            if (ClassName is null)
+            {
+                return string.Empty;
+            }
+
+            return Introduce() + $" Welcome {name} join class {ClassName}.";
+        }
     }
 }

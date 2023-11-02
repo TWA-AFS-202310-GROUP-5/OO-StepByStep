@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace OOStepByStep
 {
@@ -15,6 +17,7 @@ namespace OOStepByStep
 
         public string Add(SchoolPersonnel person)
         {
+            string msg = Welcome(person.Name);
             person.UpdateClass(className);
 
             if (person is Teacher)
@@ -27,7 +30,19 @@ namespace OOStepByStep
                 students.Add((Student)person);
             }
 
-            return string.Empty;
+            return msg;
+        }
+
+        public string Welcome(string name)
+        {
+            string teacherWelcome = teacher?.Welcome(name) ?? string.Empty;
+            string studentWelcome = string.Join('\n', students.Select(student => student.Welcome(name)));
+            if (teacherWelcome != string.Empty && studentWelcome != string.Empty)
+            {
+                return teacherWelcome + '\n' + studentWelcome;
+            }
+
+            return teacherWelcome == string.Empty ? studentWelcome : teacherWelcome;
         }
     }
 }

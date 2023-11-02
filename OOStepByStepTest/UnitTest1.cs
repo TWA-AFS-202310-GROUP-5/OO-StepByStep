@@ -132,7 +132,7 @@ namespace OOStepByStepTest
             string result = class2.Add(incommer);
 
             //Then
-            Assert.Equal("My name is Amy. I am 30 years old. I am a teacher of class 2. Welcome Tom join class 2.\nMy name is Tom. I am 21 years old. I am a student of class 2. Welcome Jim join class 2.\nMy name is Tim. I am 22 years old. I am a student of class 2. Welcome Jim join class 2.", result);
+            Assert.Equal("My name is Amy. I am 30 years old. I am a teacher of class 2. Welcome Jim join class 2.\nMy name is Tom. I am 21 years old. I am a student of class 2. Welcome Jim join class 2.\nMy name is Tim. I am 22 years old. I am a student of class 2. Welcome Jim join class 2.", result);
         }
     }
 }
