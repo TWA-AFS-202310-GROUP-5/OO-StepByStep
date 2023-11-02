@@ -13,7 +13,7 @@ namespace OOStepByStep
             this.className = className;
         }
 
-        public void Add(SchoolPersonnel person)
+        public string Add(SchoolPersonnel person)
         {
             person.UpdateClass(className);
 
@@ -26,6 +26,8 @@ namespace OOStepByStep
             {
                 students.Add((Student)person);
             }
+
+            return string.Empty;
         }
     }
 }

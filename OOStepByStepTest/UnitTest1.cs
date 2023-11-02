@@ -82,5 +82,57 @@ namespace OOStepByStepTest
             //Then
             Assert.Equal("My name is Amy. I am 30 years old. I am a teacher of class 2.", result);
         }
+
+        [Fact]
+        public void Should_return_message_include_name_age_student_class_incomerName_when_welcome_given_student()
+        {
+            //Given
+            Class class2 = new Class("2");
+            Student student = new Student("Tom", 21);
+            Student incommer = new Student("Jim", 20);
+            class2.Add(student);
+
+            //When
+            string result = class2.Add(incommer);
+
+            //Then
+            Assert.Equal("My name is Tom. I am 21 years old. I am a student of class 2. Welcome Jim join class 2.", result);
+        }
+
+        [Fact]
+        public void Should_return_message_include_name_age_teacher_class_incomerName_when_welcome_given_teacher()
+        {
+            //Given
+            Class class2 = new Class("2");
+            Teacher teacher = new Teacher("Amy", 30);
+            Student incommer = new Student("Tom", 21);
+            class2.Add(teacher);
+
+            //When
+            string result = class2.Add(incommer);
+
+            //Then
+            Assert.Equal("My name is Amy. I am 30 years old. I am a teacher of class 2. Welcome Tom join class 2.", result);
+        }
+
+        [Fact]
+        public void Should_return_message_include_name_age_job_class_incomerName_when_welcome_given_student_and_teacher()
+        {
+            //Given
+            Class class2 = new Class("2");
+            Teacher teacher = new Teacher("Amy", 30);
+            Student student1 = new Student("Tom", 21);
+            Student student2 = new Student("Tim", 22);
+            Student incommer = new Student("Jim", 20);
+            class2.Add(teacher);
+            class2.Add(student1);
+            class2.Add(student2);
+
+            //When
+            string result = class2.Add(incommer);
+
+            //Then
+            Assert.Equal("My name is Amy. I am 30 years old. I am a teacher of class 2. Welcome Tom join class 2.\nMy name is Tom. I am 21 years old. I am a student of class 2. Welcome Jim join class 2.\nMy name is Tim. I am 22 years old. I am a student of class 2. Welcome Jim join class 2.", result);
+        }
     }
 }
