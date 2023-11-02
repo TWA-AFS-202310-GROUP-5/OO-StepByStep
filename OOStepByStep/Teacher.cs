@@ -9,6 +9,7 @@ namespace OOStepByStep
     public class Teacher : Person
     {
         private int? classNum;
+        
         public Teacher(string name, int age) : base(name, age)
         {
         }

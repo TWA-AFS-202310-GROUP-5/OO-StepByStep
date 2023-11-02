@@ -9,6 +9,7 @@ namespace OOStepByStep
     public class Person
     {
         private string name;
+        public string Name { get; }
         private int age;
         public Person(string name, int age) 
         {

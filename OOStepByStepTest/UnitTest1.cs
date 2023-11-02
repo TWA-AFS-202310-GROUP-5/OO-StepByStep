@@ -77,5 +77,22 @@ namespace OOStepByStepTest
             //then
             Assert.Equal($"My name is {name}. I am {age} years old. I am a teacher of class {classNum}.", msg);
         }
+
+        [Fact]
+        public void Should_return_teacher_and_stuIntroMsg_given_new_student_join_class()
+        {
+            //given
+            ClassRoom c1 = new ClassRoom(2);
+            c1.SetTeacher("Amy", 30);
+            c1.AddStudent("Tom", 18);
+            c1.AddStudent("Jack", 19);
+            
+            //when
+            string msg = c1.Join("Jane", 19);
+            string expectMsg = "My name is Amy. I am 30 years old. I am a teacher of class 2. Welcome Jane join class 2." +
+                "\nMy name is Tom. I am 18 years old. I am a student of class 2. Welcome Jane join class 2." +
+                "\nMy name is Jack. I am 19 years old. I am a student of class 2. Welcome Jane join class 2.";
+
+        }
     }
 }
