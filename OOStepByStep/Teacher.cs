@@ -8,7 +8,7 @@ namespace OOStepByStep
 {
     public class Teacher : Person
     {
-        public Teacher(string n, int a) : base(n, a)
+        public Teacher(string name, int age) : base(name, age)
         {
         }
 
@@ -18,7 +18,7 @@ namespace OOStepByStep
 
         public override string Introduce()
         {
-            return $"{base.Introduce()} I am a teacher{this.GenerateClassIntroduce()}.";
+            return $"{base.Introduce()} I am a teacher{GenerateClassIntroduce()}.";
         }
     }
 }

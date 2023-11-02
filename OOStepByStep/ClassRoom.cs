@@ -22,13 +22,13 @@ namespace OOStepByStep
         {
             Teacher.Welcome(newStudent);
             Students.ForEach(student => student.Welcome(newStudent));
-            newStudent.SetClassNumber(ClassNumber);
+            newStudent.ClassNumber = ClassNumber;
             Students.Add(newStudent);
         }
 
         public void AddTeacher(Teacher teacher)
         {
-            teacher.SetClassNumber(ClassNumber);
+            teacher.ClassNumber = ClassNumber;
             Teacher = teacher;
         }
     }

@@ -9,9 +9,10 @@ namespace OOStepByStep
 {
     public class Person
     {
-        private readonly string name;
+        private string name;
         private int age;
         private int classNumber;
+
         public Person(string name, int age)
         {
             this.name = name;
@@ -22,32 +23,28 @@ namespace OOStepByStep
         {
             this.name = name;
             this.age = age;
-            this.classNumber = classNumber;
+            this.ClassNumber = classNumber;
         }
+
+        public int Age { get => age; set => age = value; }
+
+        public string Name => name;
+
+        public int ClassNumber { get => classNumber; set => classNumber = value; }
 
         public virtual string Introduce()
         {
-            return $"My name is {name}. I am {age} years old.";
+            return $"My name is {Name}. I am {Age} years old.";
         }
 
         public void Welcome(Student newStudent)
         {
-            Console.WriteLine($"{Introduce()} Welcome {newStudent.name} join class {classNumber}.");
+            Console.WriteLine($"{Introduce()} Welcome {newStudent.Name} join class {ClassNumber}.");
         }
 
         public string GenerateClassIntroduce()
         {
-            return GetClassNumber() == 0 ? string.Empty : $" of class {classNumber}";
-        }
-
-        public void SetClassNumber(int value)
-        {
-            classNumber = value;
-        }
-
-        private int GetClassNumber()
-        {
-            return classNumber;
+            return ClassNumber == 0 ? string.Empty : $" of class {ClassNumber}";
         }
     }
 }
