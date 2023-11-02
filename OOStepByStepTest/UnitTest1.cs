@@ -1,6 +1,10 @@
 namespace OOStepByStepTest
 {
     using OOStepByStep;
+    using System.IO;
+    using System.Text;
+    using System;
+    using System.Xml.Linq;
     using Xunit;
 
     public class UnitTest1
@@ -75,6 +79,23 @@ namespace OOStepByStepTest
             var result = student.Introduce();
 
             Assert.Equal(result, $"My name is {name}. I am {age} years old. I am a student of class {classNumber}.");
+        }
+
+        [Fact]
+        public void Should_return_teacher_and_student_introduction_when_student_join_in_class()
+        {
+            var studentA = new Student("Alice", 10);
+            var studentB = new Student("Bob", 11);
+            var teacher = new Teacher("Bob", 43);
+            var classRoom = new ClassRoom(2);
+            var fakeOutput = new StringBuilder();
+            Console.SetOut(new StringWriter(fakeOutput));
+
+            classRoom.AddTeacher(teacher);
+            classRoom.AddStudent(studentA);
+            classRoom.AddStudent(studentB);
+
+            Assert.Equal("console\r\n", fakeOutput.ToString());
         }
     }
 }
