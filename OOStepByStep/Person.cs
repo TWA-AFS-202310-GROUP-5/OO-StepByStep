@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace OOStepByStep
 {
@@ -17,9 +18,9 @@ namespace OOStepByStep
         private string Name { get; set; }
         private int Age { get; set; }
 
-        public object Introduce()
+        public string Introduce()
         {
-            throw new NotImplementedException();
+            return $"My name is {Name}. I am {Age} years old.";
         }
     }
 }
