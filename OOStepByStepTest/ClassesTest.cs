@@ -1,11 +1,12 @@
 namespace OOStepByStepTest
 {
     using OOStepByStep;
+    using System.Collections.Generic;
     using Xunit;
 
     public class ClassesTest
     {
-        [Fact]
+        [Fact] // AC1
         public void Should_return_introuduction_of_person_itself()
         {
             //given
@@ -16,7 +17,7 @@ namespace OOStepByStepTest
             Assert.Equal("My name is Tom. I am 21 years old.", introduce);
         }
 
-        [Fact]
+        [Fact] // AC2 - student
         public void Should_return_introuduction_of_student_itself()
         {
             //given
@@ -27,7 +28,7 @@ namespace OOStepByStepTest
             Assert.Equal("My name is Tom. I am 18 years old. I am a student.", introduce);
         }
 
-        [Fact]
+        [Fact] // AC3 - student
         public void Should_return_introuduction_of_student_itself_belongs_to_a_class()
         {
             //given
@@ -38,7 +39,7 @@ namespace OOStepByStepTest
             Assert.Equal("My name is Tom. I am 18 years old. I am a student of class 2.", introduce);
         }
 
-        [Fact]
+        [Fact] // AC2 - teacher
         public void Should_return_introuduction_of_teacher_itself()
         {
             //given
@@ -49,7 +50,7 @@ namespace OOStepByStepTest
             Assert.Equal("My name is Amy. I am 30 years old. I am a teacher.", introduce);
         }
 
-        [Fact]
+        [Fact] // AC3 - teacher
         public void Should_return_introuduction_of_teacher_itself_belongs_to_a_class()
         {
             //given
@@ -59,30 +60,38 @@ namespace OOStepByStepTest
             //then
             Assert.Equal("My name is Amy. I am 30 years old. I am a teacher of class 2.", introduce);
         }
-    }
 
-    public class ClassTest // Test for Class
-    {
-        [Fact]
-        public void Should_return_introuduction_of_student_belong_to_a_class()
+        [Fact] // AC4 - teacher
+        public void Should_return_introuduction_of_teacher_itself_belongs_to_a_class_and_has_a_new_student()
         {
             //given
-            var person = new Person("Tom", 21);
+            int classId = 2;
+            Class class_2 = new Class(classId);
+            class_2.Teacher_ = new Teacher("Amy", 30, classId);
+
             //when
-            string introduce = person.SelfIntroduce();
+            class_2.JoinStudent("Tom", 5);
+            string introduce = class_2.Teacher_.SelfIntroduce();
             //then
-            Assert.Equal("My name is Tom. I am 21 years old.", introduce);
+            Assert.Equal("My name is Amy. I am 30 years old. I am a teacher of class 2. Welcome Tom join class 2.", introduce);
         }
 
-        [Fact]
-        public void Should_return_introuduction_of_teacher_belong_to_a_class()
+        [Fact] // AC4 - student
+        public void Should_return_introuduction_of_student_itself_belongs_to_a_class_and_has_a_new_student()
         {
             //given
-            var person = new Person("Tom", 21);
-            //when
-            string introduce = person.SelfIntroduce();
-            //then
-            Assert.Equal("My name is Tom. I am 21 years old.", introduce);
+            int classId = 2;
+            Class class_2 = new Class(classId);
+            class_2.Students_ = new List<Student>(classId);
+
+            foreach (Student student in class_2.Students_)
+            {
+                //when
+                class_2.JoinStudent("Jim", 9);
+                string introduce = student.SelfIntroduce();
+                //then
+                Assert.Equal($"My name is {student.Name}. I am {student.Age} years old. I am a student of class 2. Welcome Jim join class 2.", introduce);
+            }
         }
     }
 }

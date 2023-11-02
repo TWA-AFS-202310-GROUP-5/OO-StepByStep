@@ -9,27 +9,43 @@ namespace OOStepByStep
 {
     public class Student : Person
     {
-        //private Class class;
-        private int classNumber;
+        private string name;
+        private int age;
+
+        private string newStudentName;
+        private int classId;
 
         public Student(string name, int age) : base(name, age)
         {
         }
 
-        public Student(string name, int age, int classNumber) : base(name, age)
+        public Student(string name, int age, int classId) : base(name, age)
         {
-            this.classNumber = classNumber;
+            this.classId = classId;
         }
 
+        public Student(int classId) : base()
+        {
+            this.classId = classId;
+        }
+
+        public string Name { get => name; set => name = value; }
+        public int Age { get => age; set => age = value; }
+
+        public string NewStudentName { get => newStudentName; set => newStudentName = value; }
         public override string SelfIntroduce()
         {
-            if (classNumber != 0)
+            if (classId != 0 && NewStudentName == null)
             {
-                return base.SelfIntroduce() + $" I am a student of class {classNumber}.";
+                return base.SelfIntroduce() + $" I am a student of class {classId}.";
+            }
+            else if (classId == 0 && NewStudentName == null)
+            {
+                return base.SelfIntroduce() + $" I am a student.";
             }
             else
             {
-                return base.SelfIntroduce() + $" I am a student.";
+                return base.SelfIntroduce() + $" I am a student of class {classId}. Welcome {newStudentName} join class {classId}.";
             }
         }
     }

@@ -9,26 +9,37 @@ namespace OOStepByStep
 {
     public class Teacher : Person
     {
-        private int classNumber;
+        private string newStudentName;
+        private int classId;
 
         public Teacher(string name, int age) : base(name, age)
         {
         }
 
-        public Teacher(string name, int age, int classNumber) : base(name, age)
+        public Teacher(string name, int age, int classId) : base(name, age)
         {
-            this.classNumber = classNumber;
+            this.classId = classId;
         }
 
+        public Teacher(int classId) : base()
+        {
+            this.classId = classId;
+        }
+
+        public string NewStudentName { get => newStudentName; set => newStudentName = value; }
         public override string SelfIntroduce()
         {
-            if (classNumber != 0)
+            if (classId != 0 && NewStudentName == null)
             {
-                return base.SelfIntroduce() + $" I am a teacher of class {classNumber}.";
+                return base.SelfIntroduce() + $" I am a teacher of class {classId}.";
+            }
+            else if (classId == 0 && NewStudentName == null)
+            {
+                return base.SelfIntroduce() + $" I am a teacher.";
             }
             else
             {
-                return base.SelfIntroduce() + $" I am a teacher.";
+                return base.SelfIntroduce() + $" I am a teacher of class {classId}. Welcome {newStudentName} join class {classId}.";
             }
         }
     }
