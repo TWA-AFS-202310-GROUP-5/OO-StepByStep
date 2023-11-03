@@ -11,59 +11,24 @@ namespace OOStepByStep
     {
         private string name;
         private int age;
-        private int classNumber;
 
         public Person(string name, int age)
         {
             this.name = name;
             this.age = age;
-            this.classNumber = 0;
-        }
-
-        public Person(string name, int age, int classNumber)
-        {
-            this.name = name;
-            this.age = age;
-            this.ClassNumber = classNumber;
         }
 
         public int Age { get => age; set => age = value; }
 
         public string Name => name;
 
-        public int ClassNumber
-        {
-            get
-            {
-                return classNumber;
-            }
-
-            set
-            {
-                if (Validation.IsValidClassNumber(value))
-                {
-                    classNumber = value;
-                }
-                else
-                {
-                    throw new ArgumentException();
-                }
-            }
-        }
-
         public virtual string Introduce()
         {
             return $"My name is {Name}. I am {Age} years old.";
         }
 
-        public void Welcome(Student newStudent)
+        public virtual void Welcome(Person person)
         {
-            Console.WriteLine($"{Introduce()} Welcome {newStudent.Name} join class {ClassNumber}.");
-        }
-
-        public string GenerateClassIntroduce()
-        {
-            return ClassNumber == 0 ? string.Empty : $" of class {ClassNumber}";
         }
     }
 }
