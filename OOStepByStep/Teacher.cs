@@ -2,6 +2,7 @@
 {
     public class Teacher : Person
     {
+        private readonly string jobTitle = "teacher";
         private SchoolPersonnel schoolPersonnel = new SchoolPersonnel();
 
         public Teacher(string name, int age) : base(name, age)
@@ -10,9 +11,7 @@
 
         public override string Introduce()
         {
-            string msg = schoolPersonnel.HasClass ? $" I am a teacher of class {schoolPersonnel.ClassName}." : " I am a teacher.";
-
-            return base.Introduce() + msg;
+            return base.Introduce() + schoolPersonnel.Introduce(jobTitle);
         }
 
         public void AssignClass(string className)

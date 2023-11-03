@@ -14,6 +14,13 @@ namespace OOStepByStep
             this.className = className;
         }
 
+        public string Introduce(string jobTitle)
+        {
+            string msg = HasClass ? $" I am a {jobTitle} of class {ClassName}." : $" I am a {jobTitle}.";
+
+            return msg;
+        }
+
         public string WelcomeNewClassMember(string name)
         {
             if (ClassName is null)

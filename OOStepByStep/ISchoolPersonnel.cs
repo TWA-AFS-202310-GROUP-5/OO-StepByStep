@@ -8,5 +8,6 @@
         public void UpdateClass(string className);
 
         public string WelcomeNewClassMember(string name);
+        public string Introduce(string jobTitle);
     }
 }
