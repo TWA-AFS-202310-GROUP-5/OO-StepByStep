@@ -4,7 +4,7 @@ namespace OOStepByStepTest
     using System.Collections.Generic;
     using Xunit;
 
-    public class ClassesTest
+    public class AC1Test
     {
         [Fact] // AC1
         public void Should_return_introuduction_of_person_itself()
@@ -16,7 +16,10 @@ namespace OOStepByStepTest
             //then
             Assert.Equal("My name is Tom. I am 21 years old.", introduce);
         }
+    }
 
+    public class AC2Test
+    {
         [Fact] // AC2 - student
         public void Should_return_introuduction_of_student_itself()
         {
@@ -26,17 +29,6 @@ namespace OOStepByStepTest
             string introduce = student.SelfIntroduce();
             //then
             Assert.Equal("My name is Tom. I am 18 years old. I am a student.", introduce);
-        }
-
-        [Fact] // AC3 - student
-        public void Should_return_introuduction_of_student_itself_belongs_to_a_class()
-        {
-            //given
-            var student = new Student("Tom", 18, 2);
-            //when
-            string introduce = student.SelfIntroduce();
-            //then
-            Assert.Equal("My name is Tom. I am 18 years old. I am a student of class 2.", introduce);
         }
 
         [Fact] // AC2 - teacher
@@ -49,6 +41,20 @@ namespace OOStepByStepTest
             //then
             Assert.Equal("My name is Amy. I am 30 years old. I am a teacher.", introduce);
         }
+    }
+
+    public class AC3Test
+    {
+        [Fact] // AC3 - student
+        public void Should_return_introuduction_of_student_itself_belongs_to_a_class()
+        {
+            //given
+            var student = new Student("Tom", 18, 2);
+            //when
+            string introduce = student.SelfIntroduce();
+            //then
+            Assert.Equal("My name is Tom. I am 18 years old. I am a student of class 2.", introduce);
+        }
 
         [Fact] // AC3 - teacher
         public void Should_return_introuduction_of_teacher_itself_belongs_to_a_class()
@@ -60,7 +66,10 @@ namespace OOStepByStepTest
             //then
             Assert.Equal("My name is Amy. I am 30 years old. I am a teacher of class 2.", introduce);
         }
+    }
 
+    public class AC4Test
+    {
         [Fact] // AC4 - teacher
         public void Should_return_introuduction_of_teacher_itself_belongs_to_a_class_and_has_a_new_student()
         {
@@ -76,22 +85,25 @@ namespace OOStepByStepTest
             Assert.Equal("My name is Amy. I am 30 years old. I am a teacher of class 2. Welcome Tom join class 2.", introduce);
         }
 
-        [Fact] // AC4 - student
-        public void Should_return_introuduction_of_student_itself_belongs_to_a_class_and_has_a_new_student()
+        [Theory] // AC4 - student
+        [InlineData("Andy", 15)]
+        [InlineData("Lucy", 12)]
+        public void Should_return_introuduction_of_student_itself_belongs_to_a_class_and_has_a_new_student(string existedStudentNmae, int existedStudentAge)
         {
             //given
-            int classId = 2;
-            Class class_2 = new Class(classId);
-            class_2.Students_ = new List<Student>(classId);
+            int classId = 3;
+            Class class_3 = new Class(classId);
 
-            foreach (Student student in class_2.Students_)
-            {
-                //when
-                class_2.JoinStudent("Jim", 9);
-                string introduce = student.SelfIntroduce();
-                //then
-                Assert.Equal($"My name is {student.Name}. I am {student.Age} years old. I am a student of class 2. Welcome Jim join class 2.", introduce);
-            }
+            Student existedStudent = new Student(existedStudentNmae, existedStudentAge, classId);
+
+            class_3.Students_.Add(existedStudent);
+
+            //when
+            class_3.JoinStudent("Jim", 9);
+            string introduce = existedStudent.SelfIntroduce();
+
+            //then
+            Assert.Equal($"My name is {existedStudentNmae}. I am {existedStudentAge} years old. I am a student of class 3. Welcome Jim join class 3.", introduce);
         }
     }
 }
