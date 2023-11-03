@@ -40,7 +40,7 @@ namespace OOStepByStep
 
             set
             {
-                if (IsValidClassNumber(value))
+                if (Validation.IsValidClassNumber(value))
                 {
                     classNumber = value;
                 }
@@ -64,11 +64,6 @@ namespace OOStepByStep
         public string GenerateClassIntroduce()
         {
             return ClassNumber == 0 ? string.Empty : $" of class {ClassNumber}";
-        }
-
-        private static bool IsValidClassNumber(int classNumber)
-        {
-            return classNumber > 0;
         }
     }
 }

@@ -8,15 +8,38 @@ namespace OOStepByStep
 {
     public class ClassRoom
     {
+        private int classNumber;
+        private List<Student> students;
+        private Teacher teacher;
+
         public ClassRoom(int number)
         {
             ClassNumber = number;
             Students = new List<Student>();
         }
 
-        private List<Student> Students { get; set; }
-        private Teacher Teacher { get; set; }
-        private int ClassNumber { get; set; }
+        public int ClassNumber
+        {
+            get
+            {
+                return classNumber;
+            }
+
+            set
+            {
+                if (Validation.IsValidClassNumber(value))
+                {
+                    classNumber = value;
+                }
+                else
+                {
+                    throw new ArgumentException();
+                }
+            }
+        }
+
+        public List<Student> Students { get => students; set => students = value; }
+        public Teacher Teacher { get => teacher; set => teacher = value; }
 
         public void AddStudent(Student newStudent)
         {
