@@ -14,12 +14,9 @@ namespace OOStepByStep
 
         public override string Introduce()
         {
-            return base.Introduce() + " I am a student.";
+            var classInfo = ClassId == null ? "" : $" I am a student of class {ClassId}.";
+            return base.Introduce() + " I am a student." + classInfo;
         }
 
-        public string DetailIntroduce()
-        {
-            return Introduce() + $" I am a student of class {ClassId}.";
-        }
     }
 }

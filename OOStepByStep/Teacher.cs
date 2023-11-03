@@ -14,12 +14,10 @@ namespace OOStepByStep
 
         public override string Introduce()
         {
-            return base.Introduce() + " I am a teacher.";
+            var classInfo = ClassId == null ? "" : $" I am a teacher of class {ClassId}.";
+            return base.Introduce() + " I am a teacher." + classInfo;
         }
 
-        public string DetailIntroduce()
-        {
-            return Introduce() + $" I am a teacher of class {ClassId}.";
-        }
+
     }
 }

@@ -63,7 +63,7 @@ namespace OOStepByStepTest
             var classId = "2";
             //When
             var person = new Student { Name = name, Age = age, ClassId  = classId};
-            var result = person.DetailIntroduce();
+            var result = person.Introduce();
 
             //Then
             Assert.Equal($"I am {name}. I am {age} years old. I am a student. I am a student of class {classId}.", result);
@@ -80,7 +80,7 @@ namespace OOStepByStepTest
 
             //When
             var person = new Teacher { Name = name, Age = age, ClassId = classId};
-            var result = person.DetailIntroduce();
+            var result = person.Introduce();
 
             //Then
             Assert.Equal($"I am {name}. I am {age} years old. I am a teacher. I am a teacher of class {classId}.", result);
