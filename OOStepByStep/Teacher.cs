@@ -3,25 +3,19 @@
     public class Teacher : Person
     {
         private readonly string jobTitle = "teacher";
-        private SchoolPersonnel schoolPersonnel = new SchoolPersonnel();
 
-        public Teacher(string name, int age) : base(name, age)
+        public Teacher(string name, int age) : base(name, age, new SchoolPersonnel())
         {
         }
 
         public override string Introduce()
         {
-            return base.Introduce() + schoolPersonnel.Introduce(jobTitle);
-        }
-
-        public void AssignClass(string className)
-        {
-            schoolPersonnel.UpdateClass(className);
+            return base.Introduce() + ((SchoolPersonnel)OrganizationInfo).Introduce(jobTitle);
         }
 
         public string Welcome(string name)
         {
-            return Introduce() + schoolPersonnel.WelcomeNewClassMember(name);
+            return Introduce() + ((SchoolPersonnel)OrganizationInfo).WelcomeNewClassMember(name);
         }
     }
 }

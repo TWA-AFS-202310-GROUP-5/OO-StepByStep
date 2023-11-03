@@ -2,7 +2,7 @@
 
 namespace OOStepByStep
 {
-    public class SchoolPersonnel : ISchoolPersonnel
+    public class SchoolPersonnel : IOrganizationInfo
     {
         private string className;
 

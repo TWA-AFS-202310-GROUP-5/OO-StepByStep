@@ -17,22 +17,19 @@ namespace OOStepByStep
 
         public string Add(Person person)
         {
-            string msg = Welcome(person.Name);
-
-            if (person is Teacher)
+            if (person.OrganizationInfo is SchoolPersonnel)
             {
-                teacher = (Teacher)person;
-                teacher.AssignClass(className);
+                SchoolPersonnel schoolPersonnel = (SchoolPersonnel)person.OrganizationInfo;
+                string msg = Welcome(person.Name);
+
+                AddToClass(person);
+
+                schoolPersonnel.UpdateClass(className);
+
+                return msg;
             }
 
-            if (person is Student)
-            {
-                Student student = (Student)person;
-                students.Add(student);
-                student.AssignClass(className);
-            }
-
-            return msg;
+            return string.Empty;
         }
 
         public string Welcome(string name)
@@ -45,6 +42,16 @@ namespace OOStepByStep
             }
 
             return teacherWelcome == string.Empty ? studentWelcome : teacherWelcome;
+        }
+
+        private void AddToClass(Person person)
+        {
+            teacher = person is Teacher ? (Teacher)person : teacher;
+
+            if (person is Student)
+            {
+                students.Add((Student)person);
+            }
         }
     }
 }

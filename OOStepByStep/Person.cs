@@ -5,6 +5,7 @@
     {
         private string name;
         private int age;
+        private IOrganizationInfo organizationInfo;
 
         public Person()
         {
@@ -15,6 +16,15 @@
             this.name = name;
             this.age = age;
         }
+
+        public Person(string name, int age, IOrganizationInfo organizationInfo)
+        {
+            this.name = name;
+            this.age = age;
+            this.organizationInfo = organizationInfo;
+        }
+
+        public IOrganizationInfo OrganizationInfo => organizationInfo;
 
         public string Name => name;
 
