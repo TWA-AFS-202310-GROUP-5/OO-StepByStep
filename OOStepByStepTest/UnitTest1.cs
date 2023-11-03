@@ -58,7 +58,7 @@ namespace OOStepByStepTest
         [Theory]
         [InlineData("Alice", 35, -1)]
         [InlineData("Jack", 20, 0)]
-        public void Should_throw_exception_given_class_number_invalid_when_construct(string name, int age, int classNumber)
+        public void Should_throw_exception_given_class_number_invalid_when_construct_teacher(string name, int age, int classNumber)
         {
             Action action = () => new Teacher(name, age, classNumber);
 
@@ -89,6 +89,16 @@ namespace OOStepByStepTest
             var result = student.Introduce();
 
             Assert.Equal(result, $"My name is {name}. I am {age} years old. I am a student of class {classNumber}.");
+        }
+
+        [Theory]
+        [InlineData(-1)]
+        [InlineData(0)]
+        public void Should_throw_exception_given_class_number_invalid_when_construct_classRoom(int classNumber)
+        {
+            Action action = () => new ClassRoom(classNumber);
+
+            Assert.Throws<ArgumentException>(action);
         }
 
         [Fact]
