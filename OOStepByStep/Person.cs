@@ -17,6 +17,7 @@ namespace OOStepByStep
         {
             this.name = name;
             this.age = age;
+            this.classNumber = 0;
         }
 
         public Person(string name, int age, int classNumber)
@@ -30,7 +31,25 @@ namespace OOStepByStep
 
         public string Name => name;
 
-        public int ClassNumber { get => classNumber; set => classNumber = value; }
+        public int ClassNumber
+        {
+            get
+            {
+                return classNumber;
+            }
+
+            set
+            {
+                if (IsValidClassNumber(value))
+                {
+                    classNumber = value;
+                }
+                else
+                {
+                    throw new ArgumentException();
+                }
+            }
+        }
 
         public virtual string Introduce()
         {
@@ -45,6 +64,11 @@ namespace OOStepByStep
         public string GenerateClassIntroduce()
         {
             return ClassNumber == 0 ? string.Empty : $" of class {ClassNumber}";
+        }
+
+        private static bool IsValidClassNumber(int classNumber)
+        {
+            return classNumber > 0;
         }
     }
 }

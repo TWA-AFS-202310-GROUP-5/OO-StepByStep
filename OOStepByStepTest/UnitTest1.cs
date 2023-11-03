@@ -56,6 +56,16 @@ namespace OOStepByStepTest
         }
 
         [Theory]
+        [InlineData("Alice", 35, -1)]
+        [InlineData("Jack", 20, 0)]
+        public void Should_throw_exception_given_class_number_invalid_when_construct(string name, int age, int classNumber)
+        {
+            Action action = () => new Teacher(name, age, classNumber);
+
+            Assert.Throws<ArgumentException>(action);
+        }
+
+        [Theory]
         [InlineData("Alice", 30, 2)]
         [InlineData("Jack", 25, 1)]
         [InlineData("Bob", 43, 5)]
