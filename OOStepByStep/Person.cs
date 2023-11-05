@@ -8,18 +8,17 @@ namespace OOStepByStep
 {
     public class Person
     {
-        private string name;
         public string Name { get; }
-        private int age;
+        public int Age { get; }
         public Person(string name, int age) 
         {
-            this.name = name;
-            this.age = age;
+            Name = name;
+            Age = age;
         }
 
         public virtual string SelfIntroduceMsg()
         {
-            return $"My name is {name}. I am {age} years old.";
+            return $"My name is {Name}. I am {Age} years old.";
         }
     }
 }

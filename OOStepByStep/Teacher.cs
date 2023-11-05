@@ -8,26 +8,31 @@ namespace OOStepByStep
 {
     public class Teacher : Person
     {
-        private int? classNum;
         
+        public int? ClassNum { get; set; }
         public Teacher(string name, int age) : base(name, age)
         {
         }
 
         public Teacher(string name, int age, int classNum) : base(name, age)
         {
-            this.classNum = classNum;
+            this.ClassNum = classNum;
         }
         public override string SelfIntroduceMsg()
         {
-            if (classNum == null)
+            if (ClassNum == null)
             {
                 return base.SelfIntroduceMsg() + " I am a teacher.";
             }
             else
             {
-                return base.SelfIntroduceMsg() + $" I am a teacher of class {classNum}.";
+                return base.SelfIntroduceMsg() + $" I am a teacher of class {ClassNum}.";
             }           
+        }
+
+        public string Welcome(string name)
+        {
+            return $" Welcome {name} join class {ClassNum}.";
         }
     }
 }

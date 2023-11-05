@@ -79,16 +79,16 @@ namespace OOStepByStepTest
         }
 
         [Fact]
-        public void Should_return_teacher_and_stuIntroMsg_given_new_student_join_class()
+        public void Should_return_teacher_and_stu_intro_msg_when_join_given_new_student_join_class()
         {
             //given
             ClassRoom c1 = new ClassRoom(2);
-            c1.SetTeacher("Amy", 30);
-            c1.AddStudent("Tom", 18);
-            c1.AddStudent("Jack", 19);
+            c1.SetTeacher(new Teacher("Amy", 30));
+            c1.AddStudent(new Student("Tom", 18));
+            c1.AddStudent(new Student("Jack", 19));
             
             //when
-            string msg = c1.Join("Jane", 19);
+            string msg = c1.Join(new Student("Jane", 19));
             string expectMsg = "My name is Amy. I am 30 years old. I am a teacher of class 2. Welcome Jane join class 2." +
                 "\r\nMy name is Tom. I am 18 years old. I am a student of class 2. Welcome Jane join class 2." +
                 "\r\nMy name is Jack. I am 19 years old. I am a student of class 2. Welcome Jane join class 2.\r\n";

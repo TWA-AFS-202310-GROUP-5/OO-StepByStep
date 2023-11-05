@@ -17,25 +17,28 @@ namespace OOStepByStep
             this.classNum = classNum;
         }
 
-        public void SetTeacher(string name, int age)
+        public void SetTeacher(Teacher teacher)
         {
-            this.teacher = new Teacher(name, age, classNum);
+            teacher.ClassNum = classNum;
+            this.teacher = teacher;
         }
 
-        public void AddStudent(string name, int age)
+        public void AddStudent(Student student)
         {
-            this.students.Add(new Student(name, age, classNum));
+            student.ClassNum = classNum;
+            this.students.Add(student);
         }
 
-        public string Join(string name, int age)
+        public string Join(Student stu)
         {
             StringBuilder msg = new StringBuilder();
-            msg.AppendLine(teacher.SelfIntroduceMsg() + $" Welcome {name} join class {classNum}.");
-            foreach (var stu in students)
+            msg.AppendLine(teacher.SelfIntroduceMsg() + teacher.Welcome(stu.Name));
+            foreach (var student in students)
             {
-                msg.AppendLine(stu.SelfIntroduceMsg() + $" Welcome {name} join class {classNum}.");
+                msg.AppendLine(student.SelfIntroduceMsg() + student.Welcome(stu.Name));
             }
-            this.students.Add(new Student(name, age, classNum));
+            stu.ClassNum = classNum;
+            this.students.Add(stu);
             return msg.ToString();
         }
     }
